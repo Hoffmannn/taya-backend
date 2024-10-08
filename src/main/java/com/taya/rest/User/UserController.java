@@ -17,18 +17,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/")
-    public ResponseEntity<Object> createUser(@RequestBody User user){
-        return userService.createUser(user);
-    }
-
-    @PutMapping("/")
-    public ResponseEntity<Object> updateUserById(@RequestBody User updatedUser){
-        return this.userService.updateUser(updatedUser);
-    }
-
-
-
     @GetMapping("/")
     public List<User> getUsers(){
         return this.userService.getUsers();
@@ -37,6 +25,16 @@ public class UserController {
     @GetMapping("/{id}")
     public Optional<User> getUserById(@PathVariable Integer id){
         return this.userService.getUserById(id);
+    }
+    
+    @PostMapping("/")
+    public ResponseEntity<Object> createUser(@RequestBody User user){
+        return userService.createUser(user);
+    }
+
+    @PutMapping("/")
+    public ResponseEntity<Object> updateUserById(@RequestBody User updatedUser){
+        return this.userService.updateUser(updatedUser);
     }
 
     @DeleteMapping("/{id}")
