@@ -3,9 +3,8 @@ package com.taya.rest.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/api/v1/users")
@@ -18,28 +17,27 @@ public class UserController {
     }
 
     @GetMapping("/")
-    public List<User> getUsers(){
+    public Flux<User> getUsers() {
         return this.userService.getUsers();
     }
 
     @GetMapping("/{id}")
-    public Optional<User> getUserById(@PathVariable Integer id){
+    public Mono<ResponseEntity<User>> getUserById(@PathVariable Integer id) {
         return this.userService.getUserById(id);
     }
-    
+
     @PostMapping("/")
-    public ResponseEntity<Object> createUser(@RequestBody User user){
+    public Mono<ResponseEntity<User>> createUser(@RequestBody User user) {
         return userService.createUser(user);
     }
 
     @PutMapping("/")
-    public ResponseEntity<Object> updateUserById(@RequestBody User updatedUser){
+    public Mono<ResponseEntity<User>> updateUserById(@RequestBody User updatedUser) {
         return this.userService.updateUser(updatedUser);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteUserById(@PathVariable Integer id){
+    public Mono<ResponseEntity<String>> deleteUserById(@PathVariable Integer id) {
         return this.userService.deleteUser(id);
     }
 }
-

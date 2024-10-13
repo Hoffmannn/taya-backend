@@ -1,21 +1,20 @@
 package com.taya.rest.User;
 
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
-@Entity
-@Table(name="users")
+@Table("users")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;
     private String zipcode;
     private String city;
     private String state;
-    private Date birthDate;
+    private LocalDateTime birthDate;
 
     public Integer getId() {
         return id;
@@ -57,11 +56,11 @@ public class User {
         this.state = state;
     }
 
-    public Date getBirthDate() {
+    public LocalDateTime getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDateTime birthDate) {
         this.birthDate = birthDate;
     }
 }
