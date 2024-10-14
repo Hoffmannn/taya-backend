@@ -1,4 +1,4 @@
-package com.taya.rest.User;
+package com.taya.rest.application;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -7,16 +7,13 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.List;
-import java.util.Optional;
-
 @Service
 public class UserService {
 
-    private final UserRepository userRepository;
+    private final com.taya.rest.User.UserRepository userRepository;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(com.taya.rest.User.UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
